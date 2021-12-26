@@ -65,9 +65,60 @@
 
 
 ### 시각화 및 분석
-- 123
+:art:Target(혼잡 여부)별 수
+![image](https://user-images.githubusercontent.com/56102116/147411699-0442e153-d97a-429e-9c6b-a5f2e2d0cd9f.png)
+- 혼잡함(1)이 10.9%, 혼잡하지 않음(0)이 89.1% 로 매우 불균형한 분포를 나타남
+
+---
+:art:혼잡 여부별 날씨(기온과 풍속) 분포 – 3개 혼잡 지하철역
+![image](https://user-images.githubusercontent.com/56102116/147414189-5aba2048-aaea-4923-8a51-3ae2002d2a1c.png)
+- 서울역과 종로3가역의 경우 다소 기온과 풍속이 낮았던 경우에 혼잡한 것으로 나타남
+- 여의나루역의 경우 기온이 높을때 혼잡한 경우를 보였는데 한강공원 바로 옆에 위치하여 더위를 피하는 사람들이 몰린것으로 예상됨
+
+---
+:art:요일별 – 하차 인원 : 혼잡(1) / 비혼잡(0) 구분
+![image](https://user-images.githubusercontent.com/56102116/147414678-25b0cc01-021d-4607-b417-5d72f490b7ae.png)
+- 평일은 혼잡함, 비혼잡함 모두 인원 수의 변화가 거의 없음
+- 주말의 경우 하차 인원의 수준이 낮게 나타남
+- 토요일 혼잡 역의 경우 이상치가 매우 높게 나타남
+
+---
+:art:Feature별 상관계수 히트맵
+![image](https://user-images.githubusercontent.com/56102116/147415010-8a50222a-21ff-46d4-bbe9-646d0c1e54fc.png)
+- 하차인원과 사업체수, 인구수, 상권수는 높은 상관관계를 보임
+- 하차인원과 기온, 풍속, 관광지수는 낮은 상관관계를 보임
+- 상권수와 인구수는 가낭 높은 상관관계를 보임
+
+---
+:art:한번도 혼잡하지 않았던 역 vs 혼잡/비혼잡 공존했던 역 - 사업체수, 관광지수
+![image](https://user-images.githubusercontent.com/56102116/147415053-2e2a2574-67c1-4815-9f67-fcc2f27bcd56.png)
+- 혼잡/비혼잡이 공존했던 역에서는 대체적으로 사업체수가 많은 것으로 나타고 관광지수는 오히려 적은 것으로 나타남
+- 유동인구는 출퇴근의 영향이 크다는 것을 확인
+
+---
+:art:한번도 혼잡하지 않았던 역 vs 혼잡/비혼잡 공존했던 역 - 기온
+![image](https://user-images.githubusercontent.com/56102116/147415171-525e1257-a515-49aa-9066-9b15c262df4a.png)
+- 혼잡하지 않았던 경우는 혼잡했던 경우에 비해 기온의 차이에 따라 분포의 차이가 커짐
+- -10도 이하의 매우 추운날의 경우 혼잡한 경우가 없었음
+
+---
+
+
 
 ### 모델링 결과
+:lollipop:모델 기본 설계(Model Design)
+![image](https://user-images.githubusercontent.com/56102116/147415238-fdb93f61-dfc5-44c3-bb86-4e98fae44267.png)
+- Feature간의 단위의 차이를 없에주기 위해 Standard Scaler 사용
+- 총 6개의 분류기 사용
+- 라벨의 불균형(약 9대1)을 해소하기 위해 Upsampling기법 적용
+- Train set, Validation Set, Test set의 비율 64대16대20
+
+---
+:lollipop:특성 선택(Feature Selection)
+![image](https://user-images.githubusercontent.com/56102116/147415327-764f7c25-a428-4a49-b899-524273619013.png)
+- 총 5가지 Case로 나누어 비교분석 
+
+---
 - 123
 
 ### Toy 서비스화
