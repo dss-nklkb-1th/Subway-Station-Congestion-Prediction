@@ -1,7 +1,8 @@
-<h1 align="center" style="display: block; font-size: 2.5em; font-weight: bold; margin-block-start: 1em; margin-block-end: 1em;">
-<img align="center" src="https://user-images.githubusercontent.com/91931949/147325504-34606f66-7172-445e-98c4-110767331415.png" style="width:100%;height:100%"/>
-  <br><br><strong>교통, 상권, 날씨를 고려한 혼잡 여부 예측 모델 개발</strong>
+<h1 align="center" style="display: block; font-size: 2em; font-weight: bold; margin-block-start: 1em; margin-block-end: 1em;">
+<img align="center" src="https://user-images.githubusercontent.com/91931949/147402028-87701a75-2dab-4a2a-8f1e-abd3223e6bd9.png" style="width:100%;height:100%"/>
+<!--   <br><br><strong>교통, 상권, 날씨를 고려한 혼잡 여부 예측 모델 개발</strong> -->
 </h1>
+
 
 ---
 
