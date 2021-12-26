@@ -81,6 +81,6 @@
 
 ## 4. 기타 사항
 **Team member**
-- 이민호 [Github]https://github.com/minho5373
-- 이서영 [Github]https://github.com/cococindy98
-- 정재영 [Github]https://github.com/jaeyoung9849
+- 이민호 [Github](https://github.com/minho5373)
+- 이서영 [Github](https://github.com/cococindy98)
+- 정재영 [Github](https://github.com/jaeyoung9849)
