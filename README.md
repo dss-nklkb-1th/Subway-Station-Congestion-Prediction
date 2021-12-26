@@ -119,10 +119,81 @@
 - 총 5가지 Case로 나누어 비교분석 
 
 ---
-- 123
+### 모델 성능 평가 (Score)
+👉 **Case1 : 모든 특성 선택** 
+![image](https://user-images.githubusercontent.com/83954540/147421312-df16fc6d-7c01-415e-8078-aa41ad5f2940.png) ![image](https://user-images.githubusercontent.com/83954540/147421326-3b097e3b-b719-417a-935a-31d463fb1aed.png)
+- RandomForest의 성능이 가장 좋고, Logistic Regression 성능은 매우 좋지 않다.
+- Acccuracy : 0.957, F1 Score : 0.646
+- Best Model의 Featrue Importance : RF
+ - 요일, 기온, 인구수 순으로 중요도가 높게 나타났다.
+ - 강수량과 적설이 중요도가 가장 낮게 나타났다.
+ - 나머지 피처들은 비슷하게 반영되고 있다. 
+ - 
+👉 **Case2 : 적설, 강수량 제외**
+![image](https://user-images.githubusercontent.com/83954540/147421435-ca263b58-5a0f-421f-9acb-638865eec856.png) ![image](https://user-images.githubusercontent.com/83954540/147421442-05d2e4a3-1d0f-483f-8e5d-9e8a5c4a6ae1.png)
+- Case1(RF기준)에서 피처중요도가 가장 낮았던 적설,강수량을 제외
+- Case1대비 F1 Score 0.013하락
+- Best Model의 Featrue Importance : RF
+ - 요일, 기온, 인구수 순으로 높게 나타났다.
+ - 나머지 피처들은 비슷하게 반영되고 있다.  
+
+👉 **Case3 : 관광지수, 상권수 제외**
+![image](https://user-images.githubusercontent.com/83954540/147421541-bc705cbf-1401-47b8-b7ec-724c6cde909a.png) ![image](https://user-images.githubusercontent.com/83954540/147421550-3b062697-8f8f-4180-b632-f48967296eff.png)
+- Case1에서 변동성이 없는 데이터 중 중요도가 낮은 2개(관광지수, 상권수) 제외
+- 가장 높은 성능은 RandomForest이고, Logistic Regression 성능이 더 나빠졌다.
+- Case1(모든 변수)와 비교시, Accuracy(+0.002)와 F1 Score(+0.007) 모두 상승했다.
+- 즉, '관광지수와 상권수'가 모델의 성능을 오히려 저하할 수도 있다는 판단을 내릴 수 있다.
+- Best Model의 Featrue Importance : RF
+ - 요일, 인구수, 기온 순으로 중요도가 높게 나타났다. 
+ - 여전히 강수량과 적설의 중요도는 낮게 나타난다. 
+
+👉 **Case4 : 요일 제외**
+![image](https://user-images.githubusercontent.com/83954540/147421632-96fe64f2-0d2b-417e-a9d6-26e10fd37a13.png) ![image](https://user-images.githubusercontent.com/83954540/147421638-00ba51bb-a730-4840-9dfe-c151d92ddded.png)
+- 주기성이 있는 특성(요일)을 제외할 시, Case1 대비 모델의 성능이 전체적으로 떨어진다.
+- 가장 높은 성능은 LGBM으로 나타난다.
+- 요일별 지하철 이용 목적이 크게 달라지기 때문에, '요일'특성이 매우 중요한 영향을 미친다.
+- Best Model의 Featrue Importance : LGBM
+ - 풍속, 기온, 역명 순으로 중요도가 높게 나타났다.
+ - 여전히 강수량과 적설의 중요도는 낮게 나타난다. 
+
+👉 **Case5 : 날씨 전체 제외**
+![image](https://user-images.githubusercontent.com/83954540/147421742-e95db35f-8104-495e-b902-44f3d68a3660.png) ![image](https://user-images.githubusercontent.com/83954540/147421751-dba73890-b748-42bb-b5b5-c9680b1f9af4.png)
+- 매일 변하는 특성(날씨)를 제외하면, Case1 대비 모델의 전체적인 성능은 나빠진다. 
+- 날씨 특성 역시 모델의 성능에 영향을 주고 있다.
+- Best Model의 Featrue Importance : RF
+ - 요일, 인구수, 역명 순으로 중요도가 높게 나타난다.
+ - Case1에서 날씨 Feature를 제외한 모든 중요도 순위가 일치한다.
+
+### 최종모델 (Final Model)
+[Classifier] : RadomForestClassifier (Standard Scaler)
+[Feature] : Case3 : 관광지수, 상권수 제외
+[Score] : Acc : 0.959, F1 : 0.653
+[Reason]
+- Acc, F1의 가장 높은 점수
+- 예상과 다르게, 역 주변 관광지 수와 상권 수는 모델에 미치는 영향이 크지 않다고 판단
+- 하차 인원에 따른 혼잡여부는, 방문인원보다 근무자의 퇴근에 영향을 받음
+- **6~8시 만남을 위한 이동보다는, 대중교통 퇴근을 위한 이동을 고려해야 함**
+[Test] : 미리 분리해둔 X_test데이터로 확인 
+- 36,300개 중 1,541개 틀림
 
 ### Toy 서비스화
-- 123
+✔ **프로젝트 목표 : "내가 가려는 지하철역 인근이 혼잡할지 예측한다."
+- 내가 가려는 지하철역 인근의 혼잡할 확률 제시
+- 해당 인근 지역의 관광지를 함께 제시 
+- 서비스화를 위한 get_congestion 함수 정의 
+ - *get_congestion(요일, 기온, 강수량, 적설, 풍속, 역명, 호선)*
+ -  각 Feature값을 넣으면 **혼잡할 확률과 인근관광지**가 출력됨
+ - ![image](https://user-images.githubusercontent.com/83954540/147421992-3bbba69b-4663-447c-857a-73f09cf7d0d2.png)
+
+### 프로젝트 한계점
+1. Cold Start Problem
+- 위드코로나 데이테ㅓ 부족
+- 사업체수 등 변화 반영 미흡
+2. 라벨링 문제
+- 혼잡 여부 산출식의 주관성
+3. 데이터 불균형
+- 데이터 통일성 부족
+- 결측치 처리에 따른 성능 저하 
 
 ## 3. 참고 문헌
 - 대도시권광역교통위원회(2019), 도시철도의 건설과 지원에 관한 기준
