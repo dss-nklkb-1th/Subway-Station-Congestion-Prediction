@@ -189,7 +189,7 @@
 
 ### 📢최종모델 (Final Model)
 **[Classifier]** : RadomForestClassifier (Standard Scaler) <br>
-**[Feature]** : <span style="background-color: #ffdce0">Case3 : 관광지수, 상권수 제외</span> <br>
+**[Feature]** : <span style='background-color: #ffdce0'>Case3 : 관광지수, 상권수 제외</span> <br>
 **[Score]** : Acc : 0.959, F1 : 0.653 <br>
 **[Reason]**
 - Acc, F1의 가장 높은 점수
