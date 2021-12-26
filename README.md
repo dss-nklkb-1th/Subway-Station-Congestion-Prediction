@@ -123,11 +123,10 @@
 👉 **Case1 : 모든 특성 선택** 
 |Models|Feature Importance|
 |:-:|:-:|
-|![Models]https://user-images.githubusercontent.com/83954540/147422120-63d90346-d4b7-450a-810b-4a397ccf3380.png)|![Feature Importance](https://user-images.githubusercontent.com/83954540/147421326-3b097e3b-b719-417a-935a-31d463fb1aed.png)|
-![image](https://user-images.githubusercontent.com/83954540/147422120-63d90346-d4b7-450a-810b-4a397ccf3380.png)
+|![Models](https://user-images.githubusercontent.com/83954540/147422120-63d90346-d4b7-450a-810b-4a397ccf3380.png)|![Feature Importance](https://user-images.githubusercontent.com/83954540/147421326-3b097e3b-b719-417a-935a-31d463fb1aed.png)|
+
 - RandomForest의 성능이 가장 좋고, Logistic Regression 성능은 매우 좋지 않다.
 - Acccuracy : 0.957, F1 Score : 0.646
-![image](https://user-images.githubusercontent.com/83954540/147421326-3b097e3b-b719-417a-935a-31d463fb1aed.png)
 - Best Model의 Featrue Importance : RF
   - 요일, 기온, 인구수 순으로 중요도가 높게 나타났다.
   - 강수량과 적설이 중요도가 가장 낮게 나타났다.
