@@ -163,19 +163,18 @@
 <br>
 
 ### 📢최종모델 (Final Model)
-**[Classifier]** : RadomForestClassifier (Standard Scaler) <br>
-**[Feature]** : <span style='background-color: #ffdce0'>Case3 : 관광지수, 상권수 제외</span> <br>
-**[Score]** : Acc : 0.959, F1 : 0.653 <br>
-**[Reason]**
+|Title|Contents|
+|------|---|
+|Classifier|RadomForestClassifier (Standard Scaler)|
+|Feature|Case3 : 관광지수, 상권수 제외|
+|Score|Acc : 0.959, F1 : 0.653|
+|Reason|
 - Acc, F1의 가장 높은 점수
 - 예상과 다르게, 역 주변 관광지 수와 상권 수는 모델에 미치는 영향이 크지 않다고 판단
 - 하차 인원에 따른 혼잡여부는, 방문인원보다 근무자의 퇴근에 영향을 받음
-- **6~8시 만남을 위한 이동보다는, 대중교통 퇴근을 위한 이동을 고려해야 함**  <br>
+- **6~8시 만남을 위한 이동보다는, 대중교통 퇴근을 위한 이동을 고려해야 함** |
+|Test|36,300개 중 1,541개 틀림|
 
-**[Test]** : 미리 분리해둔 X_test데이터로 확인 <br>
-- 36,300개 중 1,541개 틀림
-
-<br>
 
 ### Toy 서비스화
 ✔ **프로젝트 목표 : "내가 가려는 지하철역 인근이 혼잡할지 예측한다."**
@@ -190,7 +189,7 @@
 
 ### 프로젝트 한계점
 1. Cold Start Problem
-- 위드코로나 데이테 부족
+- 위드코로나 데이터 부족
 - 사업체수 등 변화 반영 미흡
 2. 라벨링 문제
 - 혼잡 여부 산출식의 주관성
