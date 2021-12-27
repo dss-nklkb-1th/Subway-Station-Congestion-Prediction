@@ -66,6 +66,8 @@
 
 ### 시각화 및 분석
 
+<br>
+
 :art:**Target(혼잡 여부)별 수**
 <img src="https://user-images.githubusercontent.com/56102116/147411699-0442e153-d97a-429e-9c6b-a5f2e2d0cd9f.png" width="800" height="250"/>
 - 혼잡함(1)이 10.9%, 혼잡하지 않음(0)이 89.1% 로 매우 불균형한 분포를 나타남
