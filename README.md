@@ -137,6 +137,7 @@
 - **Case1대비 F1 Score 0.013하락**
 
 <br>
+
 👉 **Case3 : 관광지수, 상권수 제외**
 |Models|Feature Importance|
 |:-:|:-:|
@@ -146,6 +147,7 @@
 - **즉, '관광지수와 상권수'가 모델의 성능을 오히려 저하할 수도 있다는 판단을 내릴 수 있다.**
   
 <br>
+
 👉 **Case4 : 요일 제외**
 |Models|Feature Importance|
 |:-:|:-:|
@@ -154,6 +156,7 @@
 
 
 <br>
+
 👉 **Case5 : 날씨 전체 제외**
 |Models|Feature Importance|
 |:-:|:-:|
@@ -165,15 +168,11 @@
 ### 📢최종모델 (Final Model)
 |Title|Contents|
 |------|---|
-|Classifier|RadomForestClassifier (Standard Scaler)|
-|Feature|Case3 : 관광지수, 상권수 제외|
-|Score|Acc : 0.959, F1 : 0.653|
-|Reason|
-- Acc, F1의 가장 높은 점수
-- 예상과 다르게, 역 주변 관광지 수와 상권 수는 모델에 미치는 영향이 크지 않다고 판단
-- 하차 인원에 따른 혼잡여부는, 방문인원보다 근무자의 퇴근에 영향을 받음
-- **6~8시 만남을 위한 이동보다는, 대중교통 퇴근을 위한 이동을 고려해야 함** |
-|Test|36,300개 중 1,541개 틀림|
+|**Classifier**|RadomForestClassifier (Standard Scaler)|
+|**Feature**|**Case3 : 관광지수, 상권수 제외**|
+|**Score**|Acc : 0.959, F1 : 0.653|
+|**Reason**|- Acc, F1의 가장 높은 점수</br>- 예상과 다르게, 역 주변 관광지 수와 상권 수는 모델에 미치는 영향이 크지 않다고 판단</br>- 하차 인원에 따른 혼잡여부는, 방문인원보다 근무자의 퇴근에 영향을 받음</br>- **6~8시 만남을 위한 이동보다는, 대중교통 퇴근을 위한 이동을 고려해야 함** </br>|
+|**Test**|36,300개 중 1,541개 틀림|
 
 
 ### Toy 서비스화
