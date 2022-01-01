@@ -9,6 +9,7 @@
 ## Introduction
 - **혼잡 여부 예측 모델**은 혼잡하지 않은 약속 장소를 원하는 서울권 거주자를 위한 모델입니다.
 - 교통, 상권, 날씨 등을 고려하여, 해당 지역의 혼잡 확률을 제시하고 인근 관광지를 안내하는 Toy 서비스를 개발했습니다.
+<p align="left"><img src="https://user-images.githubusercontent.com/91931949/147857092-48f1c6d6-8de6-4ff8-8e7f-e51049359d5e.gif" width="500" height="750"/></p>
 
 ---
 
