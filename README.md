@@ -9,7 +9,7 @@
 ## Introduction
 - **혼잡 여부 예측 모델**은 혼잡하지 않은 약속 장소를 원하는 서울권 거주자를 위한 모델입니다.
 - 교통, 상권, 날씨 등을 고려하여, 해당 지역의 혼잡 확률을 제시하고 인근 관광지를 안내하는 Toy 서비스를 개발했습니다.
-<p align="left"><img src="https://user-images.githubusercontent.com/91931949/147857092-48f1c6d6-8de6-4ff8-8e7f-e51049359d5e.gif" width="500" height="750"/></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/91931949/147857092-48f1c6d6-8de6-4ff8-8e7f-e51049359d5e.gif" width="350" height="540"/></p>
 
 ---
 
@@ -42,7 +42,7 @@
 3. 수행기간 : 2주 (2021. 12월 중)
 4. 목표 : **오후 6 ~ 8시 대상 지하철역 기준 인근 지역의 혼잡 여부 제시**
 5. 데이터셋 : 공공 데이터 활용, 2019-2020 총 2개년도 데이터 대상
-![image](https://user-images.githubusercontent.com/91931949/147322577-44cdfefe-7c18-4a71-a417-168044e9b7dc.png)
+![image](https://user-images.githubusercontent.com/91931949/147900683-deab8094-a321-464a-9e80-b02e553df6e1.png)
 
 ---
 
@@ -140,45 +140,64 @@
 
 ### 모델 성능 평가
 :point_right: **Case 1 : 모든 특성 선택** 
-|Models|Feature Importance|
-|:-:|:-:|
-|![Models](https://user-images.githubusercontent.com/83954540/147422120-63d90346-d4b7-450a-810b-4a397ccf3380.png)|![Feature Importance](https://user-images.githubusercontent.com/83954540/147421326-3b097e3b-b719-417a-935a-31d463fb1aed.png)|
-- **Acccuracy : 0.957, F1 Score : 0.646**
-  
+
+<img src="https://user-images.githubusercontent.com/91931949/147900524-cd0947ea-2489-437a-97b1-85d17eba55d9.png" width="500" height="300"/>
+
+- Best Model: **RandomForest Classifier**
+
+<img src="https://user-images.githubusercontent.com/91931949/147900537-b396cc49-5f76-425e-84e8-5efc1e7263fe.png" width="800" height="500"/>
+
+- **Acccuracy: 0.957, F1 Score: 0.646**
+ 
 <br>
  
 :point_right: **Case 2 : 적설, 강수량 제외**
-|Models|Feature Importance|
-|:-:|:-:|
-|![Models](https://user-images.githubusercontent.com/83954540/147421435-ca263b58-5a0f-421f-9acb-638865eec856.png)|![Feature Importance](https://user-images.githubusercontent.com/83954540/147421442-05d2e4a3-1d0f-483f-8e5d-9e8a5c4a6ae1.png)|
+
+<img src="https://user-images.githubusercontent.com/91931949/147900560-79b5769b-84dc-4d8e-9849-5d4b766b67d7.png" width="500" height="300"/>
+
+- Best Model: **RandomForest Classifier**
+
+<img src="https://user-images.githubusercontent.com/91931949/147900567-0aa5e5b4-d05c-407b-8e64-236ee1291488.png" width="800" height="500"/>
+
 - Case 1(RandomForest)에서 Feature Importance가 가장 낮았던 **적설, 강수량을 제외**했습니다.
 - **Case 1 대비 F1 Score 0.013 하락**
 
 <br>
 
 :point_right: **Case 3 : 관광지수, 상권수 제외**
-|Models|Feature Importance|
-|:-:|:-:|
-|![Models](https://user-images.githubusercontent.com/83954540/147421541-bc705cbf-1401-47b8-b7ec-724c6cde909a.png)|![Feature Importance](https://user-images.githubusercontent.com/83954540/147421550-3b062697-8f8f-4180-b632-f48967296eff.png)|
+
+<img src="https://user-images.githubusercontent.com/91931949/147900584-480d0c74-6d31-4a34-8c34-02c7f51e4fc2.png" width="500" height="300"/>
+
+- Best Model: **RandomForest Classifier**
+
+<img src="https://user-images.githubusercontent.com/91931949/147900591-a1278444-1eb2-4f33-9ea4-da071a16d0e8.png" width="800" height="500"/>
+
 - Case 1에서 변동성이 없는 데이터 중 중요도가 낮은 2개(관광지수, 상권수)를 제외했습니다.
 - **Case 1(모든 변수)와 비교했을 때, Accuracy(+0.002)와 F1 Score(+0.007) 모두 상승했습니다.**
 - **즉, '관광지수와 상권수'가 모델의 성능을 오히려 저하할 수 있다는 판단을 내릴 수 있습니다.**
-  
+
 <br>
 
 :point_right: **Case 4 : 요일 제외**
-|Models|Feature Importance|
-|:-:|:-:|
-|![Models](https://user-images.githubusercontent.com/83954540/147421632-96fe64f2-0d2b-417e-a9d6-26e10fd37a13.png)|![Feature Importance](https://user-images.githubusercontent.com/83954540/147421638-00ba51bb-a730-4840-9dfe-c151d92ddded.png)|
-- **요일별 지하철 이용 목적이 크게 달라지기 때문에, '요일'특성이 매우 중요한 영향을 미칩니다.**
 
+<img src="https://user-images.githubusercontent.com/91931949/147900613-4b5f47b8-9bb4-4c42-b1dd-f972cdfc115c.png" width="500" height="300"/>
+
+- Best Model: **LGBM Classifier**
+
+<img src="https://user-images.githubusercontent.com/91931949/147900618-581d717d-10c1-4bab-b907-ac35ba2de42c.png" width="800" height="500"/>
+
+- **요일별 지하철 이용 목적이 크게 달라지기 때문에, '요일'특성이 매우 중요한 영향을 미칩니다.**
 
 <br>
 
 :point_right: **Case 5 : 날씨 전체 제외**
-|Models|Feature Importance|
-|:-:|:-:|
-|![Models](https://user-images.githubusercontent.com/83954540/147421742-e95db35f-8104-495e-b902-44f3d68a3660.png)|![Feature Importance](https://user-images.githubusercontent.com/83954540/147421751-dba73890-b748-42bb-b5b5-c9680b1f9af4.png)|
+
+<img src="https://user-images.githubusercontent.com/91931949/147900643-133f931d-777b-47a0-901e-035e3a8bc663.png" width="500" height="300"/>
+
+- Best Model: **RandomForest Classifier**
+
+<img src="https://user-images.githubusercontent.com/91931949/147900649-f1d5138f-412e-41bd-b377-74a6fff37c8f.png" width="800" height="500"/>
+
 - **날씨 특성 역시 모델의 성능에 큰 영향을 주고 있습니다.**
 
 <br>
